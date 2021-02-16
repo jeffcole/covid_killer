@@ -3,6 +3,8 @@ defmodule CovidKiller.Application do
 
   @impl true
   def start(_type, _args) do
+    Application.ensure_all_started(:hound)
+
     children = [
       CovidKiller.CrawlServer
     ]
