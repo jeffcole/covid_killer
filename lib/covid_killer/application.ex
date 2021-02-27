@@ -6,8 +6,8 @@ defmodule CovidKiller.Application do
     {:ok, _} = Application.ensure_all_started(:wallaby)
 
     children = [
-      CovidKiller.CVSNYCrawler,
-      CovidKiller.NYSCrawler
+      CovidKiller.CVSNYCrawler
+      # CovidKiller.NYSCrawler
     ]
 
     opts = [

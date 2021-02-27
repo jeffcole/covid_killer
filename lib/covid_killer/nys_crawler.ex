@@ -25,7 +25,7 @@ defmodule CovidKiller.NYSCrawler do
         CrawlServer.log_info(__MODULE__, availability)
       end
 
-      CrawlServer.schedule()
+      # CrawlServer.schedule()
 
       {:noreply, state}
     after

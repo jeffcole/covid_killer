@@ -5,7 +5,7 @@ defmodule CovidKiller.CrawlServer do
 
   defmacro __using__(_) do
     quote do
-      use GenServer
+      use GenServer, restart: :temporary
 
       alias Wallaby.{
         Browser,
@@ -28,7 +28,8 @@ defmodule CovidKiller.CrawlServer do
   end
 
   def schedule do
-    Process.send_after(self(), :crawl, 30_000)
+    # Process.send_after(self(), :crawl, 30_000)
+    Process.send_after(self(), :crawl, 100)
   end
 
   def notify(message) do
