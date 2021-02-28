@@ -20,7 +20,11 @@ defmodule CovidKiller.CVSNYCrawler do
         |> Element.text()
 
       if !String.contains?(availability, "Fully") do
-        CrawlServer.notify("Appointments available at CVS #{@location}.")
+        CrawlServer.notify(
+          "Appointments available at CVS #{@location}.",
+          "https://www.cvs.com/vaccine/intake/store/covid-screener/covid-qns",
+          __MODULE__
+        )
 
         CrawlServer.log_warn(availability, __MODULE__)
       else

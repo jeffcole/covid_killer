@@ -31,9 +31,18 @@ defmodule CovidKiller.CrawlServer do
     Process.send_after(self(), :crawl, 30_000)
   end
 
-  def notify(message) do
+  def notify(message, uri, module) do
     # TODO Play William Tell Overture finale, trigger Rube Goldberg machine,
     # Bat Signal, etc.
+    System.cmd("terminal-notifier", [
+      "-title",
+      get_name(module),
+      "-message",
+      message,
+      "-open",
+      uri
+    ])
+
     message
     |> List.duplicate(3)
     |> Enum.join(" ")

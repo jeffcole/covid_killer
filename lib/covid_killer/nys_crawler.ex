@@ -16,7 +16,11 @@ defmodule CovidKiller.NYSCrawler do
         |> Element.text()
 
       if !String.contains?(availability, "No Appointments") do
-        CrawlServer.notify("Appointments available at #{@location}.")
+        CrawlServer.notify(
+          "Appointments available at #{@location}.",
+          "https://am-i-eligible.covid19vaccine.health.ny.gov/Public/prescreener",
+          __MODULE__
+        )
 
         CrawlServer.log_warn(availability, __MODULE__)
       else
